@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: melmv.github.io
+  baseUrl: melmv01.github.io
   ignorePatterns:
     - private
     - templates
