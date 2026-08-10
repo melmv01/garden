@@ -1,5 +1,5 @@
 ---
-title: Welcome to Quartz
+title: Benie's pages
 ---
 
 This is a blank Quartz installation.

@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle:
+  pageTitle: 
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: melmv01.github.io
+  baseUrl: melmv01.github.io/garden
   ignorePatterns:
     - private
     - templates
@@ -271,7 +271,7 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/melmv01/garden
+        GitHub: https://github.com/melBzz
         Discord Community: https://discord.gg/cRFFHYye7t
 
   - source: github:quartz-community/recent-notes
