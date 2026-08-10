@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: melmv01.github.io/garden
+  baseUrl: melmv01.github.io
   ignorePatterns:
     - private
     - templates
