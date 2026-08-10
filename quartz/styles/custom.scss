@@ -55,10 +55,12 @@ html::before {
   --highlight: rgba(255, 255, 255, 0.1);
   --textHighlight: rgba(255, 255, 255, 0.15);
 }
-#quartz-body,
+
 .sidebar.left {
-  padding-top: 8rem; // ajuste la valeur selon l'espace voulu
+  padding-top: 9rem; // ajuste la valeur selon l'espace voulu
 }
+#quartz-body,
+
 .sidebar,
 .center {
   background-color: transparent;
@@ -76,7 +78,7 @@ article,
 }
 article,
 .page-content {
-  max-width: 900px; // limite de lecture confortable, ajuste selon ton goût
+  max-width: 1000px; // limite de lecture confortable, ajuste selon ton goût
   margin: 0 auto;    // centre le texte dans l'espace libéré, au lieu de le laisser collé à gauche
 }
 div.right.sidebar {

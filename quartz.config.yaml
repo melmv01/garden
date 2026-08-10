@@ -233,7 +233,7 @@ plugins:
       position: beforeBody
       priority: 30
   - source: github:quartz-community/note-properties
-    enabled: false
+    enabled: true
     options:
       includeAll: false
       includedProperties:
@@ -241,8 +241,8 @@ plugins:
         - tags
         - aliases
       excludedProperties: []
-      hidePropertiesView: false
-      delimiters: ---
+      hidePropertiesView: true   # true si tu ne veux PAS le panneau visuel des propriétés
+      delimiters: "---"
       language: yaml
     order: 5
     layout:
