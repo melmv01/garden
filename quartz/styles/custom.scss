@@ -1,3 +1,101 @@
 @use "./variables.scss" as *;
-
 // put your custom CSS here!
+/// Overlay + variables adaptées à chaque thème
+html {
+  position: relative;
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("/static/test9.png");
+    background-size: 1920px auto;
+    background-position: top;
+    background-attachment: fixed;
+    z-index: -1;
+  }
+}
+// --- Mode clair ---
+:root[saved-theme="light"] {
+  html::before {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)),
+      url("/static/test9.png");
+  }
+  --light: rgba(255, 255, 255, 0.75);
+  --lightgray: rgba(0, 0, 0, 0.1);
+  --gray: rgba(0, 0, 0, 0.45);
+  --darkgray: rgba(0, 0, 0, 0.75);
+  --dark: #111111;
+  --secondary: #2b6cb0;
+  --tertiary: #1a4e8a;
+  --highlight: rgba(0, 0, 0, 0.06);
+  --textHighlight: rgba(0, 0, 0, 0.1);
+}
+// --- Mode sombre ---
+:root[saved-theme="dark"] {
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/static/test9.png");
+  background-repeat: no-repeat;
+  //background-size: 1920px auto;
+  background-size: contain;
+  background-position: 100% top;
+  background-attachment: fixed;
+  z-index: -1;
+}
+  --light: rgba(15, 15, 20, 0.75);
+  --lightgray: rgba(255, 255, 255, 0.15);
+  --gray: rgba(255, 255, 255, 0.5);
+  --darkgray: rgba(255, 255, 255, 0.85);
+  --dark: #fae8f6;
+  --secondary: #f1c5e9;
+  --tertiary: #fae8f6;
+  --highlight: rgba(255, 255, 255, 0.1);
+  --textHighlight: rgba(255, 255, 255, 0.15);
+}
+#quartz-body,
+.sidebar.left {
+  padding-top: 8rem; // ajuste la valeur selon l'espace voulu
+}
+.sidebar,
+.center {
+  background-color: transparent;
+}
+article,
+.page-content {
+  background-color: var(--light);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.center {
+  max-width: none;
+  width: 100%;
+}
+article,
+.page-content {
+  max-width: 900px; // limite de lecture confortable, ajuste selon ton goût
+  margin: 0 auto;    // centre le texte dans l'espace libéré, au lieu de le laisser collé à gauche
+}
+div.right.sidebar {
+  display: none !important;
+}
+// Fait récupérer à la grille principale l'espace libéré par la sidebar droite
+#quartz-body {
+  grid-template-columns: var(--sidebarWidth) 1fr !important;
+}
+// .center s'étend désormais sur l'espace milieu + droite (colonne 2 jusqu'à la fin de la grille)
+.center {
+  grid-column: 2 / -1 !important;
+}
+
+.search-button {
+  background-image: url("/static/dark-searchbar.jpg");
+  background-size: cover; // ou contain, selon l'effet voulu
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+

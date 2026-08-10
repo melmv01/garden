@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle:
+  pageTitle: Quartz 5
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -40,16 +40,14 @@ configuration:
         tertiary: "#84a59d"
         highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#b3aa0288"
-
 plugins:
-  # --- transformers ---
   - source: github:quartz-community/created-modified-date
     enabled: true
     options:
       defaultDateType: modified
       priority:
-        - git
         - frontmatter
+        - git
         - filesystem
     order: 10
   - source: github:quartz-community/syntax-highlighting
@@ -112,25 +110,21 @@ plugins:
     order: 92
   - source: github:quartz-community/fonts
     enabled: true
-
-  # --- filters ---
   - source: github:quartz-community/remove-draft
     enabled: true
   - source: github:quartz-community/explicit-publish
     enabled: false
   - source: github:quartz-community/unlisted-pages
-    enabled: false
+    enabled: true
     options: {}
     order: 45
   - source: github:quartz-community/encrypted-pages
-    enabled: false
+    enabled: true
     options:
       iterations: 600000
       passwordField: password
       unlistWhenEncrypted: false
       outputPath: static/encryptedContentIndex.json
-
-  # --- page types / emitters ---
   - source: github:quartz-community/stacked-pages
     enabled: false
     layout:
@@ -151,68 +145,36 @@ plugins:
   - source: github:quartz-community/cname
     enabled: true
   - source: github:quartz-community/canvas-page
-    enabled: false
+    enabled: true
   - source: github:quartz-community/content-page
     enabled: true
   - source: github:quartz-community/folder-page
     enabled: true
   - source: github:quartz-community/tag-page
     enabled: true
-  - source: github:quartz-community/bases-page
-    enabled: false
-    options: {}
-    order: 50
-
-  # --- left sidebar (top to bottom, priority ascending) ---
-  - source: github:quartz-community/page-title
-    enabled: false
-    layout:
-      position: left
-      priority: 10
-  - source: github:quartz-community/spacer
-    enabled: true
-    options: {}
-    order: 25
-    layout:
-      position: left
-      priority: 15
-      display: mobile-only
-  - source: github:quartz-community/search
-    enabled: true
-    layout:
-      position: left
-      priority: 20
-  - source: github:quartz-community/darkmode
-    enabled: true
-    layout:
-      position: left
-      priority: 30
   - source: github:quartz-community/explorer
     enabled: true
     layout:
       position: left
       priority: 50
-
-  # --- right sidebar (top to bottom, priority ascending) ---
   - source: github:quartz-community/graph
     enabled: false
     layout:
       position: right
       priority: 10
-  # table-of-contents déclaré plus haut avec les transformers (position: right, priority: 30)
+  - source: github:quartz-community/search
+    enabled: true
+    layout:
+      position: left
+      priority: 20
+      group: toolbar
+      groupOptions:
+        grow: true
   - source: github:quartz-community/backlinks
     enabled: true
     layout:
       position: right
       priority: 50
-
-  # --- beforeBody (haut de chaque page) ---
-  - source: github:quartz-community/breadcrumbs
-    enabled: true
-    layout:
-      position: beforeBody
-      priority: 5
-      condition: not-index
   - source: github:quartz-community/article-title
     enabled: true
     layout:
@@ -224,12 +186,63 @@ plugins:
       position: beforeBody
       priority: 20
   - source: github:quartz-community/tag-list
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 30
-  - source: github:quartz-community/note-properties
+  - source: github:quartz-community/page-title
     enabled: false
+    layout:
+      position: left
+      priority: 10
+  - source: github:quartz-community/darkmode
+    enabled: true
+    layout:
+      position: left
+      priority: 30
+      group: toolbar
+  - source: github:quartz-community/reader-mode
+    enabled: true
+    layout:
+      position: left
+      priority: 35
+      group: toolbar
+  - source: github:quartz-community/breadcrumbs
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 5
+      condition: not-index
+  - source: github:quartz-community/comments
+    enabled: false
+    options:
+      provider: giscus
+      options: {}
+    layout:
+      position: afterBody
+      priority: 10
+  - source: github:quartz-community/footer
+    enabled: true
+    options:
+      links:
+        GitHub: https://github.com/jackyzha0/quartz
+        Discord Community: https://discord.gg/cRFFHYye7t
+  - source: github:quartz-community/recent-notes
+    enabled: false
+  - source: github:quartz-community/spacer
+    enabled: true
+    options: {}
+    order: 25
+    layout:
+      position: left
+      priority: 25
+      display: mobile-only
+  - source: github:quartz-community/bases-page
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/note-properties
+    enabled: true
     options:
       includeAll: false
       includedProperties:
@@ -245,54 +258,20 @@ plugins:
       position: beforeBody
       priority: 15
       display: all
-
-  # --- reader mode (désactivé, absent chez MMW) ---
-  - source: github:quartz-community/reader-mode
-    enabled: false
-    layout:
-      position: left
-      priority: 35
-
-  # --- afterBody / footer ---
-  - source: github:quartz-community/comments
-    enabled: false
-    options:
-      provider: giscus
-      options:
-        repo: "melmv01/garden" # à adapter si besoin
-        repoId: "" # à récupérer sur giscus.app
-        category: "Announcements"
-        categoryId: "" # à récupérer sur giscus.app
-        reactionsEnabled: true
-    layout:
-      position: afterBody
-      priority: 10
-  - source: github:quartz-community/footer
+  - source:
+      name: quartz-themes
+      repo: github:saberzero1/quartz-themes
+      subdir: plugin
     enabled: true
     options:
-      links:
-        GitHub: https://github.com/melmv01/garden
-        Discord Community: https://discord.gg/cRFFHYye7t
-
-  - source: github:quartz-community/recent-notes
-    enabled: false
-
-  # --- thème visuel custom (désactivé : cause le bug @quartz-themes/default) ---
-  - source:
-     name: quartz-themes
-     repo: github:saberzero1/quartz-themes
-     subdir: plugin
-     enabled: true
-     options:
-       theme: default
-
+      theme: default
   - source: github:quartz-community/obsidian-plugin-excalidraw
-    enabled: false
+    enabled: true
     options:
       enableInteraction: true
       darkMode: auto
       exportPadding: 20
-
+    order: 50
 layout:
   groups:
     toolbar:
@@ -305,9 +284,7 @@ layout:
         beforeBody: []
         left: []
         right: []
-    content:
-      position:
-        right: []
+    content: {}
     folder:
       exclude:
         - reader-mode
