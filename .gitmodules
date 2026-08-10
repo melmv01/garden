@@ -1,0 +1,3 @@
+[submodule "content/kubernetes"]
+	path = content/kubernetes
+	url = git@github.com:melBzz/Kubernetes.git
