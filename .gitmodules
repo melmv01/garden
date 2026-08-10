@@ -1,3 +1,6 @@
 [submodule "content/kubernetes"]
 	path = content/kubernetes
 	url = git@github.com:melBzz/Kubernetes.git
+[submodule "content/thesis"]
+	path = content/thesis
+	url = git@github.com:melBzz/thesis.git
